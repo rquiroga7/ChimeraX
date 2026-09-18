@@ -35,8 +35,8 @@ UCSF DOCK output in PDB and mol2 formats are supported.
   </Dependencies>
 
   <Providers manager="data formats">
-    <Provider name="AutoDock PDBQT" nicknames="pdbqt" category="Docking results"
-		suffixes=".pdbqt" encoding="utf-8" />
+    <Provider name="AutoDock PDBQT" nicknames="pdbqt,pdbt" category="Docking results"
+		suffixes=".pdbqt,.pdbt" encoding="utf-8" />
     <Provider name="ZDOCK" nicknames="zdock" category="Docking results"
 		suffixes=".pdb" encoding="utf-8" reference_url="https://zdock.umassmed.edu" />
     <Provider name="SwissDock" nicknames="swissdock" category="Docking results"

@@ -107,12 +107,6 @@ description = "My custom tool"
 - **mk/**: Build system configuration files
 - **docs/**: Developer and user documentation
 
-## Important: No Build or Test Commands
-
-**Do not run compilation, build, or test commands.** This is a GUI application that is difficult to validate without eyes. The developer will test changes manually. Running build commands or test harnesses wastes context with irrelevant output.
-
-Do not ask "would you like me to build/test this?" - just make the code changes and move on.
-
 ## Development Notes
 
 - Bundle APIs must be implemented in `src/__init__.py`
