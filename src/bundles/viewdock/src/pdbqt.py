@@ -45,7 +45,14 @@ def _open_pdbqt(session, path, file_name, auto_style, atomic, encoding):
             with open_input(path, encoding) as f:
                 for line in f:
                     line = line[:-1]
-                    if line.startswith("ATOM "):
+                    record = line[:6]
+                    # Drop non-PDB records (REMARK, ROOT, BRANCH, ENDBRANCH,
+                    # TORSDOF, ...) so the PDB reader doesn't warn about them.
+                    # MODEL/ENDMDL are kept so multi-model docking results stay
+                    # separate structures.
+                    if record not in ("ATOM  ", "HETATM", "MODEL ", "ENDMDL", "TER   ", "CONECT"):
+                        continue
+                    if record == "ATOM  ":
                         if len(line) > 78 and line[78].isupper():
                             line = line[:78] + ' ' + line[79:]
                         if len(line) > 70:

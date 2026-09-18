@@ -50,6 +50,9 @@ class _MyAPI(BundleAPI):
                 if _name == "AutoDock PDBQT":
                     from .pdbqt import open_pdbqt
                     opener = open_pdbqt
+                elif _name == "Vinardock PDBT":
+                    from .vinardock import open_vinardock
+                    opener = open_vinardock
                 elif "Mol2" in name:
                     from .io import open_mol2
                     opener = open_mol2

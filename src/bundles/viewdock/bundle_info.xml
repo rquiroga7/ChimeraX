@@ -1,4 +1,4 @@
-<BundleInfo name="ChimeraX-ViewDock" version="1.6.5"
+<BundleInfo name="ChimeraX-ViewDock" version="1.6.6"
 	    package="chimerax.viewdock"
   	    customInit="false" minSessionVersion="1" maxSessionVersion="1">
 
@@ -35,8 +35,10 @@ UCSF DOCK output in PDB and mol2 formats are supported.
   </Dependencies>
 
   <Providers manager="data formats">
-    <Provider name="AutoDock PDBQT" nicknames="pdbqt,pdbt" category="Docking results"
-		suffixes=".pdbqt,.pdbt" encoding="utf-8" />
+    <Provider name="AutoDock PDBQT" nicknames="pdbqt" category="Docking results"
+		suffixes=".pdbqt" encoding="utf-8" />
+    <Provider name="Vinardock PDBT" nicknames="pdbt,vinardock" category="Docking results"
+		suffixes=".pdbt" encoding="utf-8" />
     <Provider name="ZDOCK" nicknames="zdock" category="Docking results"
 		suffixes=".pdb" encoding="utf-8" reference_url="https://zdock.umassmed.edu" />
     <Provider name="SwissDock" nicknames="swissdock" category="Docking results"
@@ -45,6 +47,7 @@ UCSF DOCK output in PDB and mol2 formats are supported.
 
   <Providers manager="open command">
     <Provider name="AutoDock PDBQT" want_path="true" />
+    <Provider name="Vinardock PDBT" want_path="true" />
     <Provider name="Sybyl Mol2" want_path="true" />
     <Provider name="ZDOCK" />
     <Provider name="SwissDock" />
