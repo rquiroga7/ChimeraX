@@ -92,6 +92,21 @@ def _extract_metadata(session, f, structures):
             if in_model and vina_marker in line:
                 vina_values.update(zip(vina_labels,
                                        line.split(vina_marker)[1].split()))
+            else:
+                # Vinardock writes its per-pose energy and RMSD as REMARK 980/990
+                remark_num = line[7:10].strip()
+                text = line.split(":", 1)[1].split() if ":" in line else []
+                if remark_num == "980" and text:
+                    vina_values["Energy"] = text[0]
+                elif remark_num == "990" and text:
+                    # Vinardock only reports a meaningful RMSD when run with
+                    # --calc_lig_rmsd; otherwise it is 0.000
+                    try:
+                        nonzero = float(text[0]) != 0.0
+                    except ValueError:
+                        nonzero = True
+                    if nonzero:
+                        vina_values["RMSD"] = text[0]
         elif record_type == "MODEL ":
             model_index += 1
             in_model = True
